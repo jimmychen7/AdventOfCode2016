@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-http://adventofcode.com/2016/day/
+http://adventofcode.com/2016/day/5
 By: Jimmy Chen (https://github.com/jimmychen7)
 Date: 11/12/16
 """
@@ -8,7 +8,6 @@ Date: 11/12/16
 import sys
 import hashlib
 import re
-import time
 
 if len(sys.argv) != 2:
     sys.stderr.write("Usage: %s <Door ID>" % sys.argv[0])
@@ -23,7 +22,6 @@ while len(password) != 8:
     m = hashlib.md5()
     m.update(b"%s" % hash_key)
     hash_value = m.hexdigest()
-    # sys.stdout.write("%s: %s\n" % (index, hash_value))
     if re.match('00000', hash_value):
         password += hash_value[5]
         print("\n\nindex = %s, hash = %s, password = %s" % (index,
