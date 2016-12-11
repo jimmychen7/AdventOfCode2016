@@ -15,18 +15,23 @@ if len(sys.argv) != 2:
 
 door_id = sys.argv[1]
 index = 0
-password = ""
+password = ['#'] * 8
+positions_filled = []
 
-while len(password) != 8:
+while '#' in password:
     hash_key = door_id + str(index)
     m = hashlib.md5()
     m.update(b"%s" % hash_key)
     hash_value = m.hexdigest()
-    if re.match('00000', hash_value):
-        password += hash_value[5]
-        print("\n\nindex = %s, hash = %s, password = %s" % (index,
-                                                            hash_value,
-                                                            password))
+
+    if re.match('00000', hash_value) and re.match('^\d$', hash_value[5]):
+        if (int(hash_value[5]) < 8 and int(hash_value[5]) >= 0 and
+                int(hash_value[5]) not in positions_filled):
+            password[int(hash_value[5])] = hash_value[6]
+            positions_filled.append(int(hash_value[5]))
+            print("\n\nindex = %s, hash = %s, password = %s" % (index,
+                                                                hash_value,
+                                                                password))
     index += 1
 
-print("\n\npassword = %s" % password)
+print("\n\npassword = %s" % "".join(password))
