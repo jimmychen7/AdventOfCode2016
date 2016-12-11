@@ -15,20 +15,14 @@ if len(sys.argv) != 2:
     sys.exit(1)
 
 door_id = sys.argv[1]
-index = 0
+index = 482658
 password = ""
+m = hashlib.md5()
 
-while len(password) != 8:
-    hash_key = door_id + str(index)
-    m = hashlib.md5()
-    m.update(b"%s" % hash_key)
-    hash_value = m.hexdigest()
-    # sys.stdout.write("%s: %s\n" % (index, hash_value))
-    if re.match('00000', hash_value):
-        password += hash_value[5]
-        print("\n\nindex = %s, hash = %s, password = %s" % (index,
+hash_key = door_id + str(index)
+print(hash_key)
+m.update("%s" % (hash_key))
+hash_value = m.hexdigest()
+print("\n\nindex = %s, hash = %s, password = %s" % (index,
                                                             hash_value,
                                                             password))
-    index += 1
-
-print("\n\npassword = %s" % password)
