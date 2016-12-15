@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-http://adventofcode.com/2016/day/
+http://adventofcode.com/2016/day/7
 By: Jimmy Chen (https://github.com/jimmychen7)
 Date: 15/12/16
 """
