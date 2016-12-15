@@ -3,7 +3,7 @@
 """
 http://adventofcode.com/2016/day/6
 By: Jimmy Chen (https://github.com/jimmychen7)
-Date: 14/12/16
+Date: 15/12/16
 """
 import operator
 import sys
@@ -25,5 +25,5 @@ for line in lines:
 
 for letter_count in count:
     sorted_count = sorted(letter_count.items(), key=operator.itemgetter(1))
-    sorted_count.reverse()
+    # sorted_count.reverse()
     sys.stdout.write(sorted_count[0][0])
